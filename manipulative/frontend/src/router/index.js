@@ -3,6 +3,7 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 import Login from '../pages/Login.vue'
 import Home from '../pages/Home.vue'
 import About from '../pages/About.vue'
+import { useLoadingBar } from 'naive-ui'
 
 const router = createRouter({
     history: createWebHashHistory(),
@@ -23,6 +24,18 @@ const router = createRouter({
             component: () => import('../pages/About.vue'),
         },
     ],
+})
+
+const loadingBar = useLoadingBar()
+
+router.beforeEach(() => {
+    loadingBar?.start()
+    console.log('before')
+})
+
+router.afterEach(() => {
+    loadingBar?.finish()
+    console.log('finish')
 })
 
 export default router

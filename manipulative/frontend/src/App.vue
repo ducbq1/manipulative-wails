@@ -108,20 +108,20 @@ watch(
     () => prefStore.general.language,
     (lang) => (i18n.locale.value = prefStore.currentLanguage),
 )
+
+
+
 </script>
 
 <template>
-    <n-config-provider
-        :inline-theme-disabled="true"
-        :locale="prefStore.themeLocale"
+    <n-config-provider :inline-theme-disabled="true" :locale="prefStore.themeLocale"
         :theme="prefStore.isDark ? darkTheme : undefined"
-        :theme-overrides="prefStore.isDark ? darkThemeOverrides : themeOverrides"
-        class="fill-height">
+        :theme-overrides="prefStore.isDark ? darkThemeOverrides : themeOverrides" class="fill-height">
         <n-dialog-provider>
             <n-loading-bar-provider>
-
-            <app-content :loading="initializing" />
+                <app-content :loading="initializing" />
             </n-loading-bar-provider>
+
             <!-- top modal dialogs -->
             <connection-dialog />
             <group-dialog />
